@@ -32,8 +32,10 @@ def is_after_sunset():
 
     # Convert response from API into datetime object to allow for easy comparison
     sunset_datetime = datetime.datetime.strptime(data["results"]["sunset"], "%Y-%m-%dT%H:%M:%S%z")
+    sunrise_datetime = datetime.datetime.strptime(data["results"]["sunrise"], "%Y-%m-%dT%H:%M:%S%z")
     current_time = datetime.datetime.now(timezone.utc)
-    return current_time >= sunset_datetime
+    print(sunset_datetime < current_time < sunrise_datetime)
+    return sunset_datetime <= current_time or sunrise_datetime >= current_time
 
 
 # Step 3: If both conditions are met, send email signaling to look up

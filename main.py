@@ -34,7 +34,6 @@ def is_after_sunset():
     sunset_datetime = datetime.datetime.strptime(data["results"]["sunset"], "%Y-%m-%dT%H:%M:%S%z")
     sunrise_datetime = datetime.datetime.strptime(data["results"]["sunrise"], "%Y-%m-%dT%H:%M:%S%z")
     current_time = datetime.datetime.now(timezone.utc)
-    print(sunset_datetime < current_time < sunrise_datetime)
     return sunset_datetime <= current_time or sunrise_datetime >= current_time
 
 
